@@ -31,4 +31,7 @@ def get_food():
 
 @app.route('/all')
 def show_all():
-    pass
+    food_instance = models.Food.objects.all()
+    if food_instance is None:
+        abort(404)
+    return food_instance.to_json()
